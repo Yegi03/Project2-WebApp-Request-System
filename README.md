@@ -59,56 +59,57 @@ The Maintenance Request Web Application is a Python-based project built with Fla
    git clone https://github.com/yegi03/maintenance-request-webapp.git
    cd maintenance-request-webapp
 
-2.  **Set Up a Virtual Environment**:
+  
+2. **Set Up a Virtual Environment**:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate  # For macOS/Linux
+   .venv\Scripts\activate      # For Windows
 
-  python -m venv .venv
-  source .venv/bin/activate  # For macOS/Linux
-  .venv\Scripts\activate      # For Windows
-
-
+   
 3. **Install Dependencies**:
-```bash
-  pip install -r requirements.txt
-  Configure the Database: Make sure the config.py file contains the correct path to the database:
-  SQLALCHEMY_DATABASE_URI = "sqlite:///instance/maintenance.db"
+   ```bash
+   pip install -r requirements.txt
+4. Configure the Database: Make sure the config.py file contains the correct path to the database:
+   ```bash
+   SQLALCHEMY_DATABASE_URI = "sqlite:///instance/maintenance.db"
+
+5. **Initialize the Database** :
+   ```bash
+   from main import app, db
+   with app.app_context():
+       db.create_all()
+   exit()
+
+6. **Run the Application**:
+   ```bash
+   flask run
 
 
+## Usage
 
-4. **Initialize the Database** :
-python
-Then run the following commands in the Python shell:
+### Tenant Actions
+- Submit Maintenance Request: Tenants can submit a request with the problem details and an optional photo attachment.
 
-from main import app, db
-with app.app_context():
-    db.create_all()
-exit()
-Run the Application:
-flask run
-Usage
+### staff Actions
+- Browse Requests: Staff can view and filter requests by apartment, problem area, date, or status.
+- Update Status: Staff can mark a request as "completed" once resolved.
 
-Tenant Actions
-Submit Maintenance Request: Tenants can submit a request with the problem details and an optional photo attachment.
-Staff Actions
-Browse Requests: Staff can view and filter requests by apartment, problem area, date, or status.
-Update Status: Staff can mark a request as "completed" once resolved.
-Manager Actions
-Manage Tenants: Managers can add, move, or delete tenants within the system.
-Database Structure
+### Manager Actions
+- Manage Tenants: Managers can add, move, or delete tenants within the system.
 
-This application uses an SQLite database with the following tables:
 
-Tenants Table: Contains tenant ID, name, phone, email, apartment number, check-in, and check-out dates.
-MaintenanceRequests Table: Stores each maintenance request, including request ID, apartment number, problem area, description, submission date, optional photo, and status.
+## Database Structure
+
+### This application uses an SQLite database with the following tables:
+
+- Tenants Table: Contains tenant ID, name, phone, email, apartment number, check-in, and check-out dates.
+MaintenanceRequests 
+
+- Table: Stores each maintenance request, including request ID, apartment number, problem area, description, submission date, optional photo, and status.
 GitHub Deployment
 
-Initialize the Repository:
-git init
-git add .
-git commit -m "Initial commit"
-Create a GitHub Repository: Go to GitHub and create a new repository.
-Add Remote and Push: Replace YourUsername and RepositoryName with your GitHub username and repository name.
-git remote add origin https://github.com/YourUsername/RepositoryName.git
-git push -u origin main
-License
 
-This project is open-source and available under the MIT License.
+## License
+
+This project is released into the public domain. You are free to use, modify, and distribute it without any restrictions. No license is required.
