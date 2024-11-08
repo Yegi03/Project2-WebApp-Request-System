@@ -1,0 +1,75 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Maintenance Request System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .role-selection {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .role-button {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #6c63ff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .role-button:hover {
+            background-color: #5548d9;
+        }
+
+        .role-button:active {
+            background-color: #3f36b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Maintenance Request System</h1>
+        <p>Select your role to proceed:</p>
+        <div class="role-selection">
+            <a href="{{ url_for('tenant_dashboard') }}" class="role-button">Tenant</a>
+            <a href="{{ url_for('staff_dashboard') }}" class="role-button">Staff</a>
+            <a href="{{ url_for('manager_dashboard') }}" class="role-button">Manager</a>
+        </div>
+    </div>
+</body>
+</html>

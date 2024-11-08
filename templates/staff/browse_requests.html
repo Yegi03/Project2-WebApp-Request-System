@@ -1,0 +1,82 @@
+<!-- staff/browse_requests.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Browse Maintenance Requests</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Browse Maintenance Requests</h1>
+
+    <h2>Filter Requests</h2>
+    <form method="GET" action="{{ url_for('browse_requests') }}">
+        <div class="form-group">
+            <label for="apartment_number">Apartment Number:</label>
+            <input type="text" name="apartment_number" value="{{ request.args.get('apartment_number', '') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="problem_area">Problem Area:</label>
+            <select name="problem_area">
+                <option value="">All</option>
+                <option value="kitchen" {% if request.args.get('problem_area') == 'kitchen' %}selected{% endif %}>Kitchen</option>
+                <option value="bathroom" {% if request.args.get('problem_area') == 'bathroom' %}selected{% endif %}>Bathroom</option>
+                <option value="living room" {% if request.args.get('problem_area') == 'living room' %}selected{% endif %}>Living Room</option>
+                <option value="outdoor" {% if request.args.get('problem_area') == 'outdoor' %}selected{% endif %}>Outdoor</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select name="status">
+                <option value="">All</option>
+                <option value="pending" {% if request.args.get('status') == 'pending' %}selected{% endif %}>Pending</option>
+                <option value="completed" {% if request.args.get('status') == 'completed' %}selected{% endif %}>Completed</option>
+            </select>
+        </div>
+
+        <button type="submit" class="button">Filter Requests</button>
+    </form>
+
+    <h2>Maintenance Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Apartment Number</th>
+                <th>Problem Area</th>
+                <th>Description</th>
+                <th>Date/Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in maintenance_requests %}
+            <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.apartment_number }}</td>
+                <td>{{ request.problem_area }}</td>
+                <td>{{ request.description }}</td>
+                <td>{{ request.date_time.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{{ request.status }}</td>
+                <td>
+                    {% if request.status == 'pending' %}
+                    <form action="{{ url_for('update_request_status', request_id=request.id) }}" method="POST">
+                        <button type="submit" class="button">Mark as Completed</button>
+                    </form>
+                    {% else %}
+                    Completed
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">No maintenance requests found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

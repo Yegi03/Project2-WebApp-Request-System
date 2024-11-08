@@ -1,0 +1,84 @@
+<!-- manager/manage_tenants.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manage Tenants</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Manage Tenants</h1>
+
+    <h2>Add New Tenant</h2>
+    <form action="{{ url_for('add_tenant') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="apartment_number">Apartment Number:</label>
+            <input type="text" name="apartment_number" required>
+        </div>
+        <button type="submit" class="button">Add Tenant</button>
+    </form>
+
+    <h2>Move Tenant to Another Apartment</h2>
+    <form action="{{ url_for('move_tenant') }}" method="POST">
+        <div class="form-group">
+            <label for="tenant_id">Tenant ID:</label>
+            <input type="text" name="tenant_id" required>
+        </div>
+        <div class="form-group">
+            <label for="new_apartment_number">New Apartment Number:</label>
+            <input type="text" name="new_apartment_number" required>
+        </div>
+        <button type="submit" class="button">Move Tenant</button>
+    </form>
+
+    <h2>Delete Tenant</h2>
+    <form action="{{ url_for('delete_tenant') }}" method="POST">
+        <div class="form-group">
+            <label for="tenant_id">Tenant ID:</label>
+            <input type="text" name="tenant_id" required>
+        </div>
+        <button type="submit" class="button">Delete Tenant</button>
+    </form>
+
+    <h2>Current Tenants</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tenant ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Apartment Number</th>
+                <th>Check-In Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tenant in tenants %}
+            <tr>
+                <td>{{ tenant.id }}</td>
+                <td>{{ tenant.name }}</td>
+                <td>{{ tenant.phone }}</td>
+                <td>{{ tenant.email }}</td>
+                <td>{{ tenant.apartment_number }}</td>
+                <td>{{ tenant.check_in_date.strftime('%Y-%m-%d') }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No tenants found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

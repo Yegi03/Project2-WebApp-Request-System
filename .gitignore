@@ -1,0 +1,26 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+*.env
+
+# Database files
+instance/*.db
+
+# Configuration files with sensitive information
+config.py
+
+# Log files
+*.log
+
+# IDE files (Optional, for VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS files (Optional)
+.DS_Store
