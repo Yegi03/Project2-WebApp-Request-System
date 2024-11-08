@@ -1,55 +1,71 @@
-Maintenance Request Web Application
+#Maintenance Request Web Application
 
-Overview
+
+##Overview
 
 The Maintenance Request Web Application is a Python-based project built with Flask that enables tenants, staff, and managers to efficiently manage apartment maintenance requests. Tenants can submit requests for repairs, staff can browse and update requests, and managers can handle tenant records.
 
-Features
+##Features
 
-Submit Maintenance Requests: Tenants can submit requests with details like apartment number, problem area, description, and an optional photo. Requests are automatically assigned a unique ID and marked as "pending."
-Browse and Filter Requests: Staff can view all requests and filter them by apartment number, problem area, date range, and status.
-Manage Tenant Accounts: Managers can add, move, and delete tenant accounts with details like name, phone number, email, and apartment number.
-Technologies Used
+- **Submit Maintenance Requests: Tenants can submit requests with details like apartment number, problem area, description, and an optional photo. Requests are automatically assigned a unique ID and marked as "pending."
+- **Browse and Filter Requests: Staff can view all requests and filter them by apartment number, problem area, date range, and status.
+- **Manage Tenant Accounts: Managers can add, move, and delete tenant accounts with details like name, phone number, email, and apartment number.
+- **Technologies Used
 
-Backend: Flask (Python3)
-Database: SQLite
-Frontend: HTML, CSS
-Project Structure
+## Technologies Used
+- **Backend: Flask (Python3)
+- **Database: SQLite
+- **Frontend: HTML, CSS
 
-maintenance-request-webapp/
-│
-├── main.py                        # Core Flask application and routes
-├── config.py                      # Application configuration and database URI
-├── models.py                      # SQLAlchemy models for Tenant and MaintenanceRequest
-├── requirements.txt               # Python dependencies
-│
-├── instance/
-│   └── maintenance.db             # SQLite database file
-│
-├── templates/                     # HTML templates for different user roles
-│   ├── tenant/
-│   │   ├── dashboard.html         # Tenant dashboard view
-│   │   ├── submit_request.html    # Form to submit a maintenance request
-│   │   └── request_success.html   # Confirmation page for submitted requests
-│   ├── staff/
-│   │   ├── dashboard.html         # Staff dashboard view
-│   │   └── browse_requests.html   # Page for browsing and filtering requests
-│   └── manager/
-│       └── dashboard.html         # Manager dashboard view
-│
-└── static/                        # Static files for styling
-    └── css/
-        └── styles.css             # Main stylesheet
-Setup and Installation
+  
 
-Prerequisites
-Python 3.6+
-Flask and SQLAlchemy libraries (included in requirements.txt)
-Step-by-Step Guide
-Clone the Repository:
-git clone https://github.com/YourUsername/maintenance-request-webapp.git
-cd maintenance-request-webapp
-Set Up a Virtual Environment:
+## Project Structure
+
+- **maintenance-request-webapp/**
+  - `main.py`: Core Flask application and routes
+  - `config.py`: Application configuration and database URI
+  - `models.py`: SQLAlchemy models for Tenant and MaintenanceRequest
+  - `requirements.txt`: Python dependencies
+  - **instance/**
+    - `maintenance.db`: SQLite database file
+  - **templates/**
+    - **tenant/**
+      - `dashboard.html`: Tenant dashboard view
+      - `submit_request.html`: Form to submit a maintenance request
+      - `request_success.html`: Confirmation page for submitted requests
+    - **staff/**
+      - `dashboard.html`: Staff dashboard view
+      - `browse_requests.html`: Page for browsing and filtering requests
+    - **manager/**
+      - `dashboard.html`: Manager dashboard view
+  - **static/**
+    - **css/**
+      - `styles.css`: Main stylesheet
+  - `README.md`: This file
+  - `.gitignore`: Git ignore file to exclude unnecessary files
+
+
+##Setup and Installation
+
+### Prerequisites
+
+- **Python 3.6+**: Ensure Python 3.6 or higher is installed. If not, download and install from [Python.org](https://www.python.org/downloads/).
+- **Flask and SQLAlchemy**: These libraries are needed to run the application and are included in the `requirements.txt`.
+
+### Step-by-Step Guide
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yegi03/maintenance-request-webapp.git
+   cd maintenance-request-webapp
+
+
+
+##Set Up a Virtual Environment:
+python -m venv .venv
+source .venv/bin/activate  # For macOS/Linux
+.venv\Scripts\activate      # For Windows
+
 python -m venv .venv
 source .venv/bin/activate   # For macOS/Linux
 .venv\Scripts\activate      # For Windows
