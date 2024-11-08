@@ -59,21 +59,22 @@ The Maintenance Request Web Application is a Python-based project built with Fla
    git clone https://github.com/yegi03/maintenance-request-webapp.git
    cd maintenance-request-webapp
 
+2.  **Set Up a Virtual Environment**:
+
+  python -m venv .venv
+  source .venv/bin/activate  # For macOS/Linux
+  .venv\Scripts\activate      # For Windows
 
 
-## Set Up a Virtual Environment:
-python -m venv .venv
-source .venv/bin/activate  # For macOS/Linux
-.venv\Scripts\activate      # For Windows
+3. **Install Dependencies**:
+```bash
+  pip install -r requirements.txt
+  Configure the Database: Make sure the config.py file contains the correct path to the database:
+  SQLALCHEMY_DATABASE_URI = "sqlite:///instance/maintenance.db"
 
-python -m venv .venv
-source .venv/bin/activate   # For macOS/Linux
-.venv\Scripts\activate      # For Windows
-Install Dependencies:
-pip install -r requirements.txt
-Configure the Database: Make sure the config.py file contains the correct path to the database:
-SQLALCHEMY_DATABASE_URI = "sqlite:///instance/maintenance.db"
-Initialize the Database:
+
+
+4. **Initialize the Database** :
 python
 Then run the following commands in the Python shell:
 
