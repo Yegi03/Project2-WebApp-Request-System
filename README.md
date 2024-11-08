@@ -7,15 +7,15 @@ The Maintenance Request Web Application is a Python-based project built with Fla
 
 ## Features
 
-- **Submit Maintenance Requests: Tenants can submit requests with details like apartment number, problem area, description, and an optional photo. Requests are automatically assigned a unique ID and marked as "pending."
-- **Browse and Filter Requests: Staff can view all requests and filter them by apartment number, problem area, date range, and status.
-- **Manage Tenant Accounts: Managers can add, move, and delete tenant accounts with details like name, phone number, email, and apartment number.
+- **Submit Maintenance Requests:** Tenants can submit requests with details like apartment number, problem area, description, and an optional photo. Requests are automatically assigned a unique ID and marked as "pending."
+- **Browse and Filter Requests:** Staff can view all requests and filter them by apartment number, problem area, date range, and status.
+- **Manage Tenant Accounts:** Managers can add, move, and delete tenant accounts with details like name, phone number, email, and apartment number.
 - **Technologies Used
 
 ## Technologies Used
-- **Backend: Flask (Python3)
-- **Database: SQLite
-- **Frontend: HTML, CSS
+- **Backend:** Flask (Python3)
+- **Database:** SQLite
+- **Frontend:** HTML, CSS
 
   
 
